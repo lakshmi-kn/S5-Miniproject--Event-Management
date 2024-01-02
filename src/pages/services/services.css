@@ -1,6 +1,6 @@
 .service {
     background-color: white;
-    color: goldenrod;
+    color: rgb(175, 148, 83);
 }
 
 .container{
@@ -11,7 +11,7 @@
 .heading {
     text-align: center;
     padding: 20px;
-    color: goldenrod;
+    color: rgb(175, 148, 83);
     font-size: 50px;
 }
 
@@ -19,7 +19,7 @@
     float: left;
     width: 20%;
     height: 100%;
-    background-color: goldenrod;
+    background-color: rgb(175, 148, 83);
     padding: 20px;
     box-sizing: border-box;
 }   
@@ -30,7 +30,7 @@
 }
 
 .event {
-    background-color: goldenrod;
+    background-color: rgb(175, 148, 83);
     padding: 10px;
     margin-bottom: 10px;
     color: white;
@@ -39,7 +39,7 @@
 }
 
 .book-btn {
-    background-color: goldenrod;
+    background-color: rgb(175, 148, 83);
     color: white;
     padding: 5px 10px;
     text-decoration: none;
@@ -52,8 +52,8 @@
 }
 .book-btn:hover{
     background-color: white;
-    color: goldenrod;
-    border: 1px solid goldenrod;
+    color: rgb(175, 148, 83);
+    border: 1px solid rgb(175, 148, 83);
     transition: all linear 0.3s;
 }
 
