@@ -27,7 +27,7 @@ export default function Services() {
         // package_1: "Conferences - 75,000 for four hours",
         // package_2: "Product Launches - 1,20,000 for 4 hours",
         // package_3: "Team Building Events - 1,60,000 for 4 hours",
-    }
+    },
     {
         eventName: "Birthday Celebrations",
         Decription: "Whether you're celebrating a milestone birthday or just want to throw a party for your friends and family, GatherEase can help. We offer a range of services including venue selection, catering, decor, and entertainment, so that you can focus on having fun with your guests."
@@ -35,8 +35,6 @@ export default function Services() {
         // package_2: "Product Launches - 1,20,000 for 4 hours",
         // package_3: "Team Building Events - 1,60,000 for 4 hours",
     }
-
-
     ]
 
     return (
