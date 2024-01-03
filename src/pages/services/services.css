@@ -1,0 +1,59 @@
+.service {
+    background-color: white;
+    color: rgb(175, 148, 83);
+}
+
+.container{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.heading {
+    text-align: center;
+    padding: 20px;
+    color: rgb(175, 148, 83);
+    font-size: 50px;
+}
+
+.navi {
+    float: left;
+    width: 20%;
+    height: 100%;
+    background-color: rgb(175, 148, 83);
+    padding: 20px;
+    box-sizing: border-box;
+}   
+.services {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 30px;
+}
+
+.event {
+    background-color: rgb(175, 148, 83);
+    padding: 10px;
+    margin-bottom: 10px;
+    color: white;
+    width: 500px;
+    height: 250px;
+}
+
+.book-btn {
+    background-color: rgb(175, 148, 83);
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    cursor: pointer;
+    border: 1px solid white;
+    height: 40px;
+    width: 100px;
+}
+.book-btn:hover{
+    background-color: white;
+    color: rgb(175, 148, 83);
+    border: 1px solid rgb(175, 148, 83);
+    transition: all linear 0.3s;
+}
+

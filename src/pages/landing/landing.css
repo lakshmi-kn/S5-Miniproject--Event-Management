@@ -1,0 +1,241 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.nav {
+  position: relative;
+  display: flex;
+  height: 100%;
+  top: 50%;
+  align-items: center;
+}
+
+.nav>.login {
+  padding-left: 5rem;
+}
+
+.nav-items>a {
+  padding-left: 4rem;
+  color: #000;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  width: 75%;
+  text-align: center;
+  color: aliceblue;
+  letter-spacing: 15px;
+}
+
+.service_details {
+  display: flex;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 50px;
+  gap: 100px;
+}
+
+.details_container {
+  background-color: rgb(175, 148, 83);
+  color: #fff;
+  width: 50%;
+  height: 75vh;
+  text-align: center;
+}
+
+.details_container>.heading_1,
+.heading_2,
+.learn_more,
+img {
+  position: relative;
+  font-weight: 100;
+  top: 25%;
+}
+
+.details_container>.learn_more {
+  font-family: "Raleway", sans-serif;
+  width: 50%;
+  height: 50px;
+  background-color: transparent;
+  border: 2px solid white;
+  color: #fff;
+  font-size: large;
+}
+
+.details_container > .learn_more:hover {
+  transition: all linear 0.3s;
+  background-color: white;
+  color: rgb(175, 148, 83);
+}
+
+.details_container>.heading_1 {
+  letter-spacing: 10px;
+}
+
+.service_image {
+  position: relative;
+  min-height: 100%;
+  width: 100%;
+  background-color: #000;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.dropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: goldenrod;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 1;
+  border-radius: 10%;
+}
+
+.dropdown-item {
+  display: block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.testimonials{
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+
+}
+
+.test{
+  align-items: center;
+  padding: 40px;
+  text-align: center;
+}
+
+
+.contact{
+  display: flex;
+  margin: 50px;
+  margin-top: 10px;
+  margin-left: 10%;
+  margin-right: 10%;
+  opacity: 30;
+  background-color: rgb(175, 148, 83);
+  justify-content: space-evenly;
+  align-items: flex-end;
+}
+
+.contact-us{
+  padding-left: 20px;
+  font-size: 50px;
+  font-family: "Raleway", sans-serif;
+  font-weight:bolder;
+}
+
+.contact-info{
+  padding-left: 20px;
+  font-size: 15px;
+  font-family: "Raleway", sans-serif;
+  letter-spacing: 2px;
+  color: #fff;
+  
+}
+
+.inputfield{
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.inputfield > input{
+  background-color: transparent;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  height: 20px;
+  padding: 8px;
+  font-size: medium;
+  color: #fff;
+  text-decoration: none;
+}
+
+.submit{
+  margin: 20px;
+  height: 40px;
+  width: 80px;
+  font-size: medium;
+  font-weight: bold;
+  background-color: transparent;
+  font-family: "Raleway", sans-serif;
+  color: #fff;
+  border: 1px solid white;
+  letter-spacing: 2px;
+}
+
+.submit:hover {
+  transition: all linear 0.3s;
+  background-color: white;
+  color: rgb(175, 148, 83);
+}
+
+.location{
+  color: #fff;
+  font-size: larger;
+  font-weight: lighter;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  letter-spacing: 2px;
+  align-self: flex-start;
+  padding: 30px;
+}
+
+.logo2{
+  height: 200px ;
+  align-self: flex-end;
+}
+
+.add{
+  font-style: italic;
+}
+
+.number{
+  font-size: medium;
+}
+
+
+.footer{
+  position: relative;
+  background-color: rgb(175, 148, 83);
+  padding: 15px;
+  width: 100%;
+  height: 10px;
+  font-size: small;
+  text-align: center;
+  color: #fff;
+}
