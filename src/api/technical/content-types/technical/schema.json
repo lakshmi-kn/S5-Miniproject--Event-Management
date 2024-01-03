@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "technicals",
+  "info": {
+    "singularName": "technical",
+    "pluralName": "technicals",
+    "displayName": "Technical"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Lighting": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "Sounds": {
+      "type": "boolean",
+      "required": true
+    },
+    "Visuals": {
+      "type": "boolean",
+      "required": true
+    },
+    "Pyrotechnics": {
+      "type": "boolean"
+    }
+  }
+}

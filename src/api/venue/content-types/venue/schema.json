@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "venues",
+  "info": {
+    "singularName": "venue",
+    "pluralName": "venues",
+    "displayName": "Venue",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "VenueName": {
+      "type": "text",
+      "required": true,
+      "unique": true
+    },
+    "Address": {
+      "type": "blocks"
+    },
+    "VenueID": {
+      "type": "uid"
+    },
+    "Capacity": {
+      "type": "integer"
+    },
+    "Facilities": {
+      "type": "enumeration",
+      "enum": [
+        "stage",
+        "restroom",
+        "hall",
+        "lounges",
+        "aircon"
+      ]
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "accomodations",
+  "info": {
+    "singularName": "accomodation",
+    "pluralName": "accomodations",
+    "displayName": "Accomodation",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "HotelID": {
+      "type": "uid",
+      "targetField": "HotelName"
+    },
+    "HotelName": {
+      "type": "string"
+    },
+    "NumberOfRooms": {
+      "type": "integer"
+    },
+    "RoomTypes": {
+      "type": "enumeration",
+      "enum": [
+        "single",
+        "double",
+        "suite"
+      ]
+    },
+    "PricePerNight": {
+      "type": "biginteger"
+    },
+    "Location": {
+      "type": "string"
+    }
+  }
+}

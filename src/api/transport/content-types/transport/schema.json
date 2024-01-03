@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "transports",
+  "info": {
+    "singularName": "transport",
+    "pluralName": "transports",
+    "displayName": "Transport",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "TransportType": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "Capacity": {
+      "type": "integer"
+    },
+    "Description": {
+      "type": "text"
+    },
+    "TransportID": {
+      "type": "uid"
+    }
+  }
+}

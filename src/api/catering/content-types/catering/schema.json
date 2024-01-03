@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "caterings",
+  "info": {
+    "singularName": "catering",
+    "pluralName": "caterings",
+    "displayName": "Catering "
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "CatererName": {
+      "type": "string"
+    },
+    "Cusine": {
+      "type": "string"
+    },
+    "Menu": {
+      "type": "text"
+    },
+    "Contact": {
+      "type": "email"
+    },
+    "ContactNo": {
+      "type": "biginteger"
+    },
+    "ServingStyle": {
+      "type": "string"
+    },
+    "CatererID": {
+      "type": "uid"
+    }
+  }
+}
