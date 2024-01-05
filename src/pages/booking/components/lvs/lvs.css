@@ -1,0 +1,12 @@
+.options{
+    display: flex;
+    flex-direction: column;
+}
+
+.lvs_option{
+    padding: 10px 0 0 0;
+}
+
+.lvs_option > input{
+    margin-left: 10px;
+}

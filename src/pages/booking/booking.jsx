@@ -1,16 +1,108 @@
-import React, { useState } from 'react'
+import { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { Tab, TabPanel, TabList, Tabs } from 'react-tabs'
-import Calendar from 'react-calendar';
+import { BasicInfoComponent } from './components/basic_info/basic_info';
+import { VenueComponent } from './components/venue/venue';
+import { TransportComponent } from './components/transport/transport';
+import { CateringComponent } from './components/catering/catering';
+import { LVSComponent } from "./components/lvs/lvs";
 
-
-import logo from "../../assets/logo.png"
 import 'react-tabs/style/react-tabs.css';
 import 'react-calendar/dist/Calendar.css';
 import "./booking.css"
 
+import logo from "../../assets/logo.png"
+
+
 export const NewBooking = () => {
-    const [date, setDate] = useState(new Date());
+    const [submitDisabled, setSubmitDisabled] = useState(true);
+    const [basicInfo, setBasicInfo] = useState(
+        {
+            eventDate: new Date(),
+            eventName: '',
+            eventLocation: '',
+            eventDescription: '',
+            eventTimings: '',
+        }
+    )
+    const [venue, setVenue] = useState(
+        {
+            venueName: '',
+            venueLocation: '',
+            venueSize: 0,
+            venueInformation: '',
+        }
+    )
+    const [transport, setTransport] = useState(
+        {
+            transportType: '',
+            pickupLocation: '',
+            transpotCount: 0
+        }
+    )
+    const [catering, setCater] = useState(
+        {
+            cateringType: '',
+            peopleCount: 0,
+            menuItems: [],
+        }
+    )
+
+    const [lvsInfo, setLvsInfo] = useState(
+        {
+            lightsType: false,
+            visualsType: false,
+            soundsType: false,
+            ambientLighting: false,
+            videoProjection: false,
+            livePerformances: false,
+            soundSystem: false,
+        }
+    )
+
+    // Function to update basicInfo state
+    const updateBasicInfo = (updatedBasicInfo) => {
+        setBasicInfo((prevBasicInfo) => ({
+            ...prevBasicInfo,
+            ...updatedBasicInfo,
+        }));
+    };
+
+    // Function to update venue state
+    const updateVenue = (updatedVenue) => {
+        setVenue((prevVenue) => ({
+            ...prevVenue,
+            ...updatedVenue,
+        }));
+    };
+
+    // Function to update transport state
+    const updateTransport = (updatedTransport) => {
+        setTransport((prevTransport) => ({
+            ...prevTransport,
+            ...updatedTransport,
+        }));
+    };
+
+    // Function to update catering state
+    const updateCatering = (updatedCatering) => {
+        setCater((prevCatering) => ({
+            ...prevCatering,
+            ...updatedCatering,
+        }));
+    };
+
+    // Function to update lvsInfo state
+    const updateLvsInfo = (updatedLvsInfo) => {
+        setLvsInfo((prevLvsInfo) => ({
+            ...prevLvsInfo,
+            ...updatedLvsInfo,
+        }));
+    };
+
+    function handleClick() {
+        console.log(basicInfo)
+    }
 
     return (
         <>
@@ -31,7 +123,7 @@ export const NewBooking = () => {
             <div className="booking">
                 <Tabs>
                     <TabList>
-                        <Tab>Date & Time</Tab>
+                        <Tab>Basic Information</Tab>
                         <Tab>Venue</Tab>
                         <Tab>Transport and Accomodation</Tab>
                         <Tab>Catering</Tab>
@@ -39,77 +131,44 @@ export const NewBooking = () => {
                     </TabList>
 
                     <TabPanel>
-                        <div className="date-time">
-                            <Calendar onChange={setDate} value={date} />
-                        </div>
-                    </TabPanel>
-                        <div className='venue'>
-
-
-                        </div>
-
-                    <TabPanel>
-                        <div className='transp-accom'>
-
-                        </div>
-                        <p>
-                            <b>Luigi</b> (<i>Japanese: ルイージ Hepburn: Ruīji, [ɾɯ.iː.dʑi̥]</i>) (<i>English: /luˈiːdʒi/;
-                                Italian: [luˈiːdʒi]</i>) is a fictional character featured in video games and related media
-                            released by Nintendo. Created by prominent game designer Shigeru Miyamoto, Luigi is portrayed
-                            as the slightly younger but taller fraternal twin brother of Nintendo's mascot Mario, and
-                            appears in many games throughout the Mario franchise, often as a sidekick to his brother.
-                        </p>
-                        <p>
-                            Source:{' '}
-                            <a href="https://en.wikipedia.org/wiki/Luigi" target="_blank">
-                                Wikipedia
-                            </a>
-                        </p>
+                        <BasicInfoComponent
+                            basicInfo={basicInfo}
+                            updateBasicInfo={updateBasicInfo}
+                        />
                     </TabPanel>
 
                     <TabPanel>
-                        <div className='caterers'>
-
-                        </div>
-                        <p>
-                            <b>Princess Peach</b> (<i>Japanese: ピーチ姫 Hepburn: Pīchi-hime, [piː.tɕi̥ çi̥.me]</i>)
-                            is a character in Nintendo's Mario franchise. Originally created by Shigeru Miyamoto,
-                            Peach is the princess of the fictional Mushroom Kingdom, which is constantly under
-                            attack by Bowser. She often plays the damsel in distress role within the series and
-                            is the lead female. She is often portrayed as Mario's love interest and has appeared
-                            in Super Princess Peach, where she is the main playable character.
-                        </p>
-                        <p>
-                            Source:{' '}
-                            <a href="https://en.wikipedia.org/wiki/Princess_Peach" target="_blank">
-                                Wikipedia
-                            </a>
-                        </p>
+                        <VenueComponent
+                            venue={venue}
+                            updateVenue={updateVenue}
+                        />
                     </TabPanel>
-                        <div className='lvs'>
-
-                        </div>
 
                     <TabPanel>
-                        <p>
-                            <b>Yoshi</b> (<i>ヨッシー Yosshī, [joɕ.ɕiː]</i>) (<i>English: /ˈjoʊʃi/ or /ˈjɒʃi/</i>), once
-                            romanized as Yossy, is a fictional anthropomorphic dinosaur who appears in
-                            video games published by Nintendo. Yoshi debuted in Super Mario World (1990) on the
-                            Super Nintendo Entertainment System as Mario and Luigi's sidekick. Yoshi later starred
-                            in platform and puzzle games, including Super Mario World 2: Yoshi's Island, Yoshi's Story
-                            and Yoshi's Woolly World. Yoshi also appears in many of the Mario spin-off games, including
-                            Mario Party and Mario Kart, various Mario sports games, and Nintendo's crossover fighting
-                            game series Super Smash Bros. Yoshi belongs to the species of the same name, which is
-                            characterized by their variety of colors.
-                        </p>
-                        <p>
-                            Source:{' '}
-                            <a href="https://en.wikipedia.org/wiki/Yoshi" target="_blank">
-                                Wikipedia
-                            </a>
-                        </p>
+                        <TransportComponent
+                            transport={transport}
+                            updateTransport={updateTransport}
+                        />
+                    </TabPanel>
+
+                    <TabPanel>
+                        <CateringComponent
+                            catering={catering}
+                            updateCatering={updateCatering}
+                        />
+                    </TabPanel>
+
+                    <TabPanel>
+                        <LVSComponent
+                            lvsInfo={lvsInfo}
+                            updateLvsInfo={updateLvsInfo}
+                        />s
                     </TabPanel>
                 </Tabs>
+
+                <div className="button-container">
+                    <button onClick={handleClick}>Submit</button>
+                </div>
             </div>
         </>
     )

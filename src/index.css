@@ -11,10 +11,10 @@ body {
 
 ::-webkit-scrollbar{
   background-color: #dd9cab;
-  width: 10px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-thumb{
   background-color: #EF476F;
-  border-radius: 15px;
+  border-radius: 5px;
 }
