@@ -20,21 +20,38 @@
     "Address": {
       "type": "blocks"
     },
-    "VenueID": {
-      "type": "uid"
-    },
     "Capacity": {
       "type": "integer"
     },
-    "Facilities": {
-      "type": "enumeration",
-      "enum": [
-        "stage",
-        "restroom",
-        "hall",
-        "lounges",
-        "aircon"
+    "Rating": {
+      "type": "integer",
+      "required": true,
+      "default": 1
+    },
+    "NumberOfReviews": {
+      "type": "biginteger",
+      "default": "100"
+    },
+    "Price": {
+      "type": "biginteger"
+    },
+    "VenueID": {
+      "type": "uid",
+      "required": true
+    },
+    "VenueImage": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
       ]
+    },
+    "Description": {
+      "type": "blocks"
     }
   }
 }

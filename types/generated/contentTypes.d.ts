@@ -781,11 +781,11 @@ export interface ApiAccomodationAccomodation extends Schema.CollectionType {
   };
   attributes: {
     HotelID: Attribute.UID<'api::accomodation.accomodation', 'HotelName'>;
-    HotelName: Attribute.String;
-    NumberOfRooms: Attribute.Integer;
-    RoomTypes: Attribute.Enumeration<['single', 'double', 'suite']>;
+    HotelName: Attribute.String & Attribute.Required;
     PricePerNight: Attribute.BigInteger;
     Location: Attribute.String;
+    Description: Attribute.Blocks;
+    HotelImage: Attribute.Media & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -810,18 +810,15 @@ export interface ApiCateringCatering extends Schema.CollectionType {
     singularName: 'catering';
     pluralName: 'caterings';
     displayName: 'Catering ';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     CatererName: Attribute.String;
-    Cusine: Attribute.String;
-    Menu: Attribute.Text;
-    Contact: Attribute.Email;
-    ContactNo: Attribute.BigInteger;
-    ServingStyle: Attribute.String;
     CatererID: Attribute.UID;
+    Description: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -890,7 +887,8 @@ export interface ApiTransportTransport extends Schema.CollectionType {
     TransportType: Attribute.String & Attribute.Required & Attribute.Unique;
     Capacity: Attribute.Integer;
     Description: Attribute.Text;
-    TransportID: Attribute.UID;
+    TransportID: Attribute.UID & Attribute.Required;
+    VehicleImage: Attribute.Media & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -923,11 +921,13 @@ export interface ApiVenueVenue extends Schema.CollectionType {
   attributes: {
     VenueName: Attribute.Text & Attribute.Required & Attribute.Unique;
     Address: Attribute.Blocks;
-    VenueID: Attribute.UID;
     Capacity: Attribute.Integer;
-    Facilities: Attribute.Enumeration<
-      ['stage', 'restroom', 'hall', 'lounges', 'aircon']
-    >;
+    Rating: Attribute.Integer & Attribute.Required & Attribute.DefaultTo<1>;
+    NumberOfReviews: Attribute.BigInteger & Attribute.DefaultTo<'100'>;
+    Price: Attribute.BigInteger;
+    VenueID: Attribute.UID & Attribute.Required;
+    VenueImage: Attribute.Media;
+    Description: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

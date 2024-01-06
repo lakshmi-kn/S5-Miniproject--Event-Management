@@ -17,24 +17,28 @@
       "targetField": "HotelName"
     },
     "HotelName": {
-      "type": "string"
-    },
-    "NumberOfRooms": {
-      "type": "integer"
-    },
-    "RoomTypes": {
-      "type": "enumeration",
-      "enum": [
-        "single",
-        "double",
-        "suite"
-      ]
+      "type": "string",
+      "required": true
     },
     "PricePerNight": {
       "type": "biginteger"
     },
     "Location": {
       "type": "string"
+    },
+    "Description": {
+      "type": "blocks"
+    },
+    "HotelImage": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }

@@ -24,7 +24,19 @@
       "type": "text"
     },
     "TransportID": {
-      "type": "uid"
+      "type": "uid",
+      "required": true
+    },
+    "VehicleImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
     }
   }
 }
