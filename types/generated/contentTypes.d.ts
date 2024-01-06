@@ -784,8 +784,8 @@ export interface ApiAccomodationAccomodation extends Schema.CollectionType {
     HotelName: Attribute.String & Attribute.Required;
     PricePerNight: Attribute.BigInteger;
     Location: Attribute.String;
-    Description: Attribute.Blocks;
     HotelImage: Attribute.Media & Attribute.Required;
+    AccomDetails: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -818,7 +818,7 @@ export interface ApiCateringCatering extends Schema.CollectionType {
   attributes: {
     CatererName: Attribute.String;
     CatererID: Attribute.UID;
-    Description: Attribute.Blocks;
+    Description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -920,14 +920,13 @@ export interface ApiVenueVenue extends Schema.CollectionType {
   };
   attributes: {
     VenueName: Attribute.Text & Attribute.Required & Attribute.Unique;
-    Address: Attribute.Blocks;
     Capacity: Attribute.Integer;
     Rating: Attribute.Integer & Attribute.Required & Attribute.DefaultTo<1>;
     NumberOfReviews: Attribute.BigInteger & Attribute.DefaultTo<'100'>;
     Price: Attribute.BigInteger;
     VenueID: Attribute.UID & Attribute.Required;
     VenueImage: Attribute.Media;
-    Description: Attribute.Blocks;
+    VenueDescription: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

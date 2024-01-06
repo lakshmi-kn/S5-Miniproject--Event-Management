@@ -17,9 +17,6 @@
       "required": true,
       "unique": true
     },
-    "Address": {
-      "type": "blocks"
-    },
     "Capacity": {
       "type": "integer"
     },
@@ -50,8 +47,8 @@
         "audios"
       ]
     },
-    "Description": {
-      "type": "blocks"
+    "VenueDescription": {
+      "type": "text"
     }
   }
 }

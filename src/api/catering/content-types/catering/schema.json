@@ -19,7 +19,7 @@
       "type": "uid"
     },
     "Description": {
-      "type": "blocks"
+      "type": "text"
     }
   }
 }

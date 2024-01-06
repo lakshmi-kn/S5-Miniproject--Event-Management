@@ -26,9 +26,6 @@
     "Location": {
       "type": "string"
     },
-    "Description": {
-      "type": "blocks"
-    },
     "HotelImage": {
       "type": "media",
       "multiple": true,
@@ -39,6 +36,9 @@
         "videos",
         "audios"
       ]
+    },
+    "AccomDetails": {
+      "type": "text"
     }
   }
 }
