@@ -4,7 +4,8 @@
   "info": {
     "singularName": "catering",
     "pluralName": "caterings",
-    "displayName": "Catering "
+    "displayName": "Catering ",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,23 +15,11 @@
     "CatererName": {
       "type": "string"
     },
-    "Cusine": {
-      "type": "string"
-    },
-    "Menu": {
-      "type": "text"
-    },
-    "Contact": {
-      "type": "email"
-    },
-    "ContactNo": {
-      "type": "biginteger"
-    },
-    "ServingStyle": {
-      "type": "string"
-    },
     "CatererID": {
       "type": "uid"
+    },
+    "Description": {
+      "type": "blocks"
     }
   }
 }
