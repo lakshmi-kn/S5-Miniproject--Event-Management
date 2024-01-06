@@ -49,6 +49,9 @@
     },
     "VenueDescription": {
       "type": "text"
+    },
+    "Address": {
+      "type": "text"
     }
   }
 }

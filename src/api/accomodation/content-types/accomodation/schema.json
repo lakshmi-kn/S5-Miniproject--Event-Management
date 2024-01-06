@@ -38,7 +38,8 @@
       ]
     },
     "AccomDetails": {
-      "type": "text"
+      "type": "text",
+      "default": "Room types :"
     }
   }
 }

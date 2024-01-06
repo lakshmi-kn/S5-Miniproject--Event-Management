@@ -785,7 +785,7 @@ export interface ApiAccomodationAccomodation extends Schema.CollectionType {
     PricePerNight: Attribute.BigInteger;
     Location: Attribute.String;
     HotelImage: Attribute.Media & Attribute.Required;
-    AccomDetails: Attribute.Text;
+    AccomDetails: Attribute.Text & Attribute.DefaultTo<'Room types :'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -927,6 +927,7 @@ export interface ApiVenueVenue extends Schema.CollectionType {
     VenueID: Attribute.UID & Attribute.Required;
     VenueImage: Attribute.Media;
     VenueDescription: Attribute.Text;
+    Address: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
