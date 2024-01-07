@@ -13,12 +13,16 @@
   "nodemonConfig": {
     "verbose": true,
     "watch": [
-      "authentication"
+      "backend/server.js"
     ],
     "ext": "js",
-    "delay": "3000"
+    "delay": "3000",
+    "ignore": [
+      "logs/*"
+    ]
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.39.2",
     "axios": "^1.6.3",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",

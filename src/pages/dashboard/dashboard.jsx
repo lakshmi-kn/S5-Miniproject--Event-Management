@@ -28,7 +28,9 @@ function Dashboard() {
         }
     };
 
-    // ... implement fetchBills function similarly
+    function fetchBills(){
+        
+    }
 
     return (
         <><div className="dashboard-container">

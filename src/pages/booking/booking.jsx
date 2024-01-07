@@ -6,21 +6,18 @@ import { VenueComponent } from './components/venue/venue';
 import { TransportComponent } from './components/transport/transport';
 import { CateringComponent } from './components/catering/catering';
 import { LVSComponent } from "./components/lvs/lvs";
+import InformationPanel from './bill/bill';
+import { postDataToSupabase } from '../../backend/api';
 
 import 'react-tabs/style/react-tabs.css';
 import 'react-calendar/dist/Calendar.css';
 import "./booking.css"
 
-
 import logo from "../../assets/logo.png"
-import profileIcon from "../../assets/profile.svg"
-import InformationPanel from './bill/bill';
-
 
 export const NewBooking = () => {
     const [submitDisabled, setSubmitDisabled] = useState(true);
     const [totalPrice, setTotalPrice] = useState(0)
-    const [dataReady, setDataReady] = useState(false)
 
     const [basicInfo, setBasicInfo] = useState(
         {
@@ -118,15 +115,35 @@ export const NewBooking = () => {
             catering: catering,
             lvs: lvsInfo,
         };
-
         return <InformationPanel combinedData={combinedData} />
+    }
+
+    async function handleSubmission() {
+        try {
+            const combinedData = {
+                basicInfo: basicInfo,
+                venue: venue,
+                transport: transport,
+                catering: catering,
+                lvs: lvsInfo,
+            };
+
+            await postDataToSupabase(combinedData);
+            // Handle successful submission, e.g., display a success message
+            console.log('Data posted to Supabase successfully!');
+            alert('Event information submitted successfully!');
+        } catch (error) {
+            // Handle errors gracefully
+            console.error('Error posting data to Supabase:', error.message);
+            alert('Failed to submit data. Please try again later.');
+        }
     }
 
     return (
         <>
             <div className="header">
                 <div className="logo">
-                <Link to= "/"><img src={logo} alt="" width={200} /></Link>
+                    <Link to="/"><img src={logo} alt="" width={200} /></Link>
                 </div>
                 <div className="nav">
                     <div className="nav-items">
@@ -190,7 +207,7 @@ export const NewBooking = () => {
                 </Tabs>
 
                 <div className="button-container">
-                    <button >Submit</button>
+                    <button onClick={handleSubmission}>Confirm Booking</button>
                 </div>
             </div>
         </>

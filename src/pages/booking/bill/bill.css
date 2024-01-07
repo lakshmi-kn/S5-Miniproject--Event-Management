@@ -1,26 +1,29 @@
+/* General container and layout */
 .information-panel {
-    margin: 20px;
-    padding: 15px;
-    border-radius: 5px;
-    background-color: #f5f5f5;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  }
-  
-  h2 {
-    font-size: 1.5em;
-    margin-bottom: 15px;
-  }
-  
-  .section {
-    margin-bottom: 15px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .section h3 {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .section ul {
-    list
-  
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 5px;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 1200px;
+}
+
+/* Section styling */
+.section {
+  margin-bottom: 20px;
+}
+
+.section h3 {
+  margin-top: 0;
+  font-weight: bold;
+}
+
+.section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.section li {
+  margin-bottom: 5px;
+  padding-left: 15px;
+}
