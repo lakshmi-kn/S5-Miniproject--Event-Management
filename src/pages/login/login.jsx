@@ -60,7 +60,9 @@ const LoginForm = (props) => {
             axios(options)
                 .then((res) => {
                     if (res.data && res.data.user) {
-                        navigate('/');
+                        console.log(res.data.user)
+                        localStorage.setItem('user', JSON.stringify(res.data.user));
+                        navigate('/dashboard');
                     }
                     else {
                         alert("No record existed");

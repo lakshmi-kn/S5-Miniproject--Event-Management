@@ -10,6 +10,11 @@ import profileIcon from "../../assets/profile.svg"
 import "./landing.css"
 import { Link } from 'react-router-dom';
 
+export const handleSignOut = () => {
+    localStorage.clear();
+    navigate('/');
+}
+
 export default function Landing({ user }) {
 
     const [formData, setFormData] = useState({
@@ -58,8 +63,8 @@ export default function Landing({ user }) {
                                 </div>
                                 :
                                 <div className="dropdown">
-                                    <Link to={'/login'} className="dropdown-item">Login</Link>
-                                    <Link to={'/register'} className="dropdown-item">Sign Up</Link>
+                                    <Link to={'/dashboard'} className="dropdown-item">Dashboard</Link>
+                                    <Link onClick={handleSignOut} className="dropdown-item">Sign Up</Link>
                                 </div>
                         )}
                     </div>

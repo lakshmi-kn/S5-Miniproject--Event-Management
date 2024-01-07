@@ -1,26 +1,32 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Tab, TabPanel, TabList, Tabs } from 'react-tabs'
 import { BasicInfoComponent } from './components/basic_info/basic_info';
 import { VenueComponent } from './components/venue/venue';
 import { TransportComponent } from './components/transport/transport';
 import { CateringComponent } from './components/catering/catering';
 import { LVSComponent } from "./components/lvs/lvs";
+import InformationPanel from './bill/bill';
+import { postDataToSupabase } from '../../backend/api';
+import { handleSignOut } from '../landing/landing';
 
 import 'react-tabs/style/react-tabs.css';
 import 'react-calendar/dist/Calendar.css';
 import "./booking.css"
 
-
-import logo from "../../assets/logo.png"
+import logo from '../../assets/logo.png'
 import profileIcon from "../../assets/profile.svg"
-import InformationPanel from './bill/bill';
-
 
 export const NewBooking = () => {
     const [submitDisabled, setSubmitDisabled] = useState(true);
     const [totalPrice, setTotalPrice] = useState(0)
-    const [dataReady, setDataReady] = useState(false)
+    const [showDropdown, setShowDropdown] = useState(false);
+    const user = JSON.parse(localStorage.getItem('user')) ?? null
+    const navigate = useNavigate()
+
+    if (!user) {
+        navigate('/login')
+    }
 
     const [basicInfo, setBasicInfo] = useState(
         {
@@ -118,22 +124,52 @@ export const NewBooking = () => {
             catering: catering,
             lvs: lvsInfo,
         };
-
         return <InformationPanel combinedData={combinedData} />
+    }
+
+    async function handleSubmission() {
+        try {
+            const combinedData = {
+                basicInfo: basicInfo,
+                venue: venue,
+                transport: transport,
+                catering: catering,
+                lvs: lvsInfo,
+            };
+
+            await postDataToSupabase(combinedData, user.id);
+            // Handle successful submission, e.g., display a success message
+            console.log('Data posted to Supabase successfully!');
+            alert('Event information submitted successfully!');
+            navigate('/dashboard')
+        } catch (error) {
+            // Handle errors gracefully
+            console.error('Error posting data to Supabase:', error.message);
+            alert('Failed to submit data. Please try again later.');
+        }
     }
 
     return (
         <>
             <div className="header">
                 <div className="logo">
-                <Link to= "/"><img src={logo} alt="" width={200} /></Link>
+                    <img src={logo} alt="" width={200} />
                 </div>
                 <div className="nav">
                     <div className="nav-items">
                         <Link to="/about">About</Link>
                         <Link to='/services' >Services</Link>
-                        <Link to="/#contact">Contact Us</Link>
+                        <a href="#contact">Contact Us</a>
                         <Link to="/gallery">Gallery</Link>
+                    </div>
+                    <div className="login">
+                        <img src={profileIcon} width={30} onClick={() => setShowDropdown(!showDropdown)} />
+                        {
+                            showDropdown && (
+                                <div className="dropdown">
+                                    <Link onClick={handleSignOut} className="dropdown-item">Sign out</Link>
+                                </div>
+                            )}
                     </div>
                 </div>
             </div>
@@ -190,7 +226,7 @@ export const NewBooking = () => {
                 </Tabs>
 
                 <div className="button-container">
-                    <button >Submit</button>
+                    <button onClick={handleSubmission}>Confirm Booking</button>
                 </div>
             </div>
         </>
