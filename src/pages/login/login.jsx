@@ -79,14 +79,14 @@ const LoginForm = (props) => {
                 <label className="label">Email:</label>
                 <input type="email"
                     placeholder='Enter regsitered EmailID'
-                    value={email} className="input"
+                    value={email} className="details-input"
                     onChange={ev => setEmail(ev.target.value)} />
                 {emailError && <p className="error">{emailError}</p>}
 
                 <label className="label">Password:</label>
                 <input type="password"
                     placeholder='Enter password'
-                    value={password} className="input"
+                    value={password} className="details-input"
                     onChange={ev => setPassword(ev.target.value)} />
                 {passwordError && <p className="error">{passwordError}</p>}
 

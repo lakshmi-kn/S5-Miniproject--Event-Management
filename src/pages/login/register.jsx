@@ -113,23 +113,23 @@ export default function RegisterForm() {
             <h1 className="reg">Register</h1>
             <form className="" onSubmit={handleSubmit}>
                 <label className="label">First Name:</label>
-                <input type="fname" value={fname} className="input" onChange={(event) => setFname(event.target.value)} />
+                <input type="fname" value={fname} className="details-input" onChange={(event) => setFname(event.target.value)} />
 
                 <label className="label">Last Name:</label>
-                <input type="lname" value={lname} className="input" onChange={(event) => setLname(event.target.value)} />
+                <input type="lname" value={lname} className="details-input" onChange={(event) => setLname(event.target.value)} />
 
                 <label className="label">Phone number:</label>
-                <input type="phone" value={phone} className="input" onChange={(event) => setPhone(event.target.value)} />
+                <input type="phone" value={phone} className="details-input" onChange={(event) => setPhone(event.target.value)} />
 
                 <label className="label">Email:</label>
-                <input type="email" value={email} className="input" onChange={(event) => setEmail(event.target.value)} />
+                <input type="email" value={email} className="details-input" onChange={(event) => setEmail(event.target.value)} />
                 {emailError && <p className="error">{emailError}</p>}
 
                 <label className="label">Password:</label>
-                <input type="password" value={password} className="input" onChange={(event) => setPassword(event.target.value)} />
+                <input type="password" value={password} className="details-input" onChange={(event) => setPassword(event.target.value)} />
 
                 <label className="label">Confirm Password:</label>
-                <input type="password" value={confirmPassword} className="input" onChange={(event) => setConfirmPassword(event.target.value)} />
+                <input type="password" value={confirmPassword} className="details-input" onChange={(event) => setConfirmPassword(event.target.value)} />
                 {passwordError && <p className="error">{passwordError}</p>}
 
                 <button type="submit" className="button">Register</button>
