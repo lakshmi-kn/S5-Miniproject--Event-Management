@@ -45,9 +45,9 @@ export default function Services() {
                 </div>
             </div>
 
-            <div className="container">
+            <div className="service_container">
                 <main className='main'>
-                    <h2 className='heading'>Services</h2>
+                    <h2 className='service_heading'>Services</h2>
                     <section className="services">
                         {
                             events.map((event) => {

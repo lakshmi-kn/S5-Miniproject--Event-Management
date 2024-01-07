@@ -43,7 +43,7 @@ export default function Landing({ user }) {
                 </div>
                 <div className="nav">
                     <div className="nav-items">
-                        <Link to="/dashboard">Dashboard</Link>
+                        <Link to="/about">About</Link>
                         <Link to='/services' >Services</Link>
                         <a href="#contact">Contact Us</a>
                         <Link to="/gallery">Gallery</Link>
