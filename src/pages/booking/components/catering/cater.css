@@ -1,0 +1,51 @@
+/* catering-options.css */
+
+.container {
+    font-family: sans-serif;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;  /* Adjust as needed */
+  }
+  
+  .title {
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .cuisine-select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .people-count-label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .people-count-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .items-title {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  
+  .item-checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .item-checkbox input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  

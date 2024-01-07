@@ -18,3 +18,7 @@
 .event_details > div > input,  .event_details > div > textarea{
   margin: 15px 0;
 }
+
+.calendar{
+  width: 450px !important;
+}

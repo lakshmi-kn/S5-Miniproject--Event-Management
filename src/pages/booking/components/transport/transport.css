@@ -1,0 +1,75 @@
+.transport {
+  margin: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+thead {
+  background-color: #f5f5f5;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  font-weight: bold;
+}
+
+tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #eee;
+}
+
+.transport input[type="radio"] {
+  margin-right: 5px;
+}
+
+.transport p {
+  text-align: center;
+  padding: 10px;
+}
+
+.pick-up-location {
+  width: 50%;
+}
+
+.pick-up-location label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.pick-up-location input, .vehicle-count input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.vehicle-count label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input {
+  margin-top: 30px;
+  border: none;
+  display: flex;
+  gap: 50px;
+}

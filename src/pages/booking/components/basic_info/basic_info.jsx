@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Calendar from 'react-calendar';
 import TimePicker from 'react-time-picker';
-import Clock from 'react-clock';
 
 import 'react-time-picker/dist/TimePicker.css';
 import 'react-clock/dist/Clock.css';
@@ -32,7 +31,7 @@ export const BasicInfoComponent = ({ basicInfo, updateBasicInfo }) => {
 
             <div className="block">
                 <div className="calendar">
-                    <Calendar onChange={handleDateChange} value={eventDate} />
+                    <Calendar onChange={handleDateChange} value={eventDate} className={"calendar"} />
                 </div>
 
                 <div className="event_details">
