@@ -1,73 +1,77 @@
 
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { handleSignOut } from '../landing/landing';
+
+import { BookingTable } from './bookingTable';
+import { Services } from './services';
+
+
 import './dashboard.css';
 
 import logo from '../../assets/logo.png'
 import profileIcon from "../../assets/profile.svg"
 
-import { Link } from 'react-router-dom';
 
 function Dashboard() {
-    const [bookedEvents, setBookedEvents] = useState([]);
-    const [bills, setBills] = useEffect([]); // Assuming bills are also fetched
+    const [showDropdown, setShowDropdown] = useState(false);
+    const [selectedSection, setSelectedSection] = useState('booking-details');
+    const navigate = useNavigate()
+    const user = JSON.parse(localStorage.getItem('user')) ?? null
 
-    useEffect(() => {
-        // Fetch booked events and bills data
-        fetchBookedEvents();
-        fetchBills(); // Implement your logic to fetch bills
-    }, []);
-
-    const fetchBookedEvents = async () => {
-        try {
-            const response = await fetch('/api/booked-events'); // Replace with your API endpoint
-            const data = await response.json();
-            setBookedEvents(data);
-        } catch (error) {
-            console.error('Error fetching booked events:', error);
-            // Handle errors gracefully, e.g., display an error message to the user
-        }
-    };
-
-    function fetchBills(){
-        
+    if (!user) {
+        navigate('/login')
     }
 
+    const handleSectionClick = (section) => {
+        setSelectedSection(section);
+    };
+
     return (
-        <><div className="dashboard-container">
+        <div className="main_dashboard">
+
             <div className="header">
                 <div className="logo">
-                    <Link to="/"><img src={logo} alt="" width={200} /></Link>
+                    <img src={logo} alt="" width={200} />
                 </div>
                 <div className="nav">
                     <div className="nav-items">
                         <Link to="/about">About</Link>
-                        <Link to="">Services</Link>
-                        <Link to="/#contact">Contact Us</Link>
+                        <Link to='/services' >Services</Link>
+                        <a href="#contact">Contact Us</a>
                         <Link to="/gallery">Gallery</Link>
                     </div>
                     <div className="login">
-                        <img src={profileIcon} width={30} />
+                        <img src={profileIcon} width={30} onClick={() => setShowDropdown(!showDropdown)} />
+                        {
+                            showDropdown && (
+                                <div className="dropdown">
+                                    <Link onClick={handleSignOut} className="dropdown-item">Sign out</Link>
+                                </div>
+                            )}
                     </div>
                 </div>
             </div>
+
+            <div className="dashboard_content">
+                <aside className="sidenav">
+                    <nav>
+                        <ul>
+                            <li className={selectedSection === 'booking-details' ? 'selected' : ''}>
+                                <a onClick={() => handleSectionClick('booking-details')}>Booking Details</a>
+                            </li>
+                            <li className={selectedSection === 'services' ? 'selected' : ''}>
+                                <a onClick={() => handleSectionClick('services')}>Services</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </aside>
+                <main className="content">
+                    {selectedSection === 'booking-details' && <BookingTable />}
+                    {selectedSection === 'services' && <Services />}
+                </main>
+            </div>
         </div>
-            <main className="dashboard-content"></main><section className="booked-events">
-                <h2>Booked Events</h2>
-                <ul>
-                    {bookedEvents.map((event) => (
-                        <li key={event.id}>
-                            {/* Display relevant event details here, e.g., */}
-                            <h3>{event.name}</h3>
-                            <p>Date: {event.date}</p>
-                            <p>Venue: {event.venue}</p>
-                            {/* ...other details as needed */}
-                        </li>
-                    ))}
-                </ul>
-            </section><section className="bills">
-                <h2>Bills</h2>
-                {/* Display bills data using a similar approach */}
-            </section></>
     );
 }
 

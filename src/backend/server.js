@@ -1,75 +1,72 @@
 const express = require("express");
-const mysql = require("mysql");
+const { Pool } = require("pg");
 const cors = require("cors");
 
 const app = express();
-app.use(cors({
-    origin: ['http://localhost:5173'],
-    methods: ['GET', 'POST'],
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://vercel.com/lakshmis-projects-1694b8a1/s5-miniproject-event-management/Fk8637RGxgLofZ48sow9z9moa9nb",
+    ],
+    methods: ["GET", "POST"],
     credentials: true,
-}));
+  })
+);
 app.use(express.json());
 
-const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "registrations"
+const SUPABASE_API_URL = "postgresql://postgres:F0zDGuDA8OIZvjSe@db.gdbyyvsbjuqmwhppozle.supabase.co:5432/postgres";
+const SUPABASE_ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdkYnl5dnNianVxbXdocHBvemxlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDQ0NjQ4MTUsImV4cCI6MjAyMDA0MDgxNX0.h5H46F3J4v3CeAQoySPOexmEmXeGtaq1lALozHCXir0";
+
+// Supabase connection pool
+const supabaseUrl = SUPABASE_API_URL;
+const pool = new Pool({
+  connectionString: supabaseUrl,
 });
 
-db.connect((err) => {
-    if (err) {
-        console.error("Error connecting to MySQL:", err);
-        return;
+app.post("/register", async (req, res) => {
+  try {
+    const { FirstName, LastName, PhoneNo, Email, Password } = req.body;
+    const values = [FirstName, LastName, PhoneNo, Email, Password];
+    const query =
+      "INSERT INTO login (FirstName, LastName, PhoneNo, Email, Password) VALUES ($1, $2, $3, $4, $5)";
+
+    const client = await pool.connect();
+    const result = await client.query(query, values);
+
+    res.json(result.rows);
+  } catch (err) {
+    console.error("Database error:", err);
+    res.status(500).json({ error: "Database error", message: err.message });
+  }
+});
+
+app.post("/login", async (req, res) => {
+  try {
+    const { Email, Password } = req.body;
+    const query = "SELECT * FROM login WHERE Email = $1 AND Password = $2";
+
+    const client = await pool.connect();
+    const result = await client.query(query, [Email, Password]);
+
+    if (result.rows.length > 0) {
+      res.json({ status: "Success", user: result.rows[0] });
+    } else {
+      res.json({ status: "Failed" });
     }
-    console.log("Connected to MySQL");
+  } catch (err) {
+    console.error("Database error:", err);
+    res.status(500).json({ error: "Database error", message: err.message });
+  }
 });
 
-app.post('/register', (req, res) => {
-    const body = req.body;
-    const sql = "INSERT INTO login (FirstName, LastName, PhoneNo, Email, Password) VALUES(?)";
-    const values = [
-        req.body.FirstName,
-        req.body.LastName,
-        req.body.PhoneNo,
-        req.body.Email,
-        req.body.Password 
-    ]
-    db.query(sql, [values],(err,data) => {
-        if (err) {
-            console.error("Database error:", err);
-            return res.status(500).json({ error: "Database error", message: err.message });
-        }
-        return res.json(data);
-    })
-    // res.send('Status check');
-    // res.send(values)
-})
-
-app.post('/login', (req, res) => {
-    const sql = "SELECT * FROM login WHERE `Email` = ? AND `Password` = ?";
-    console.log(req.body)
-    db.query(sql, [req.body.Email, req.body.Password], (err, data) => {
-        if (err) {
-            console.error("Database error:", err);
-            return res.status(500).json({ error: "Database error", message: err.message });
-        }
-
-        if (data.length > 0) {
-            return res.json({ status: "Success", user: data[0] }); // Consider sending user details instead of "Success"
-        } else {
-            return res.json({ status: "Failed" });
-        }
-    });
+app.get("/register", (req, res) => {
+  console.log("Status");
+  res.send("Status");
 });
 
-app.get('/register', (req, res) => {
-    console.log('Status');
-    res.send('Status');
-});
-
-
-const server = app.listen(8081, '0.0.0.0', () => {
-    const { port, address } = server.address();
-    console.log(`Express server started on port ${port} at ${address}`);
+const server = app.listen(8081, "0.0.0.0", () => {
+  const { port, address } = server.address();
+  console.log(`Express server started on port ${port} at ${address}`);
 });
