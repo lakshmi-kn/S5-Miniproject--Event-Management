@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
-import "./landing.css"
-import logo from "../../assets/logo.png"
-import profileIcon from "../../assets/profile.svg"
 import heroImage from "../../assets/hero.webp"
 import servicesImage from "../../assets/services.webp"
 import flower from "../../assets/flower.svg"
-import { Link } from 'react-router-dom';
 import logo2 from "../../assets/logo2.png";
+import logo from '../../assets/logo.png'
+import profileIcon from "../../assets/profile.svg"
+
+import "./landing.css"
+import { Link } from 'react-router-dom';
 
 export default function Landing({ user }) {
-    const [showDropdown, setShowDropdown] = useState(false);
 
     const [formData, setFormData] = useState({
         name: '',
@@ -21,6 +21,8 @@ export default function Landing({ user }) {
     });
 
     const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const [showDropdown, setShowDropdown] = useState(false);
 
     const handleChange = (event) => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -41,10 +43,10 @@ export default function Landing({ user }) {
                 </div>
                 <div className="nav">
                     <div className="nav-items">
-                        <a href="#about">About</a>
+                        <Link to="/dashboard">Dashboard</Link>
                         <Link to='/services' >Services</Link>
                         <a href="#contact">Contact Us</a>
-                        <a href="#gallery">Gallery</a>
+                        <Link to="/gallery">Gallery</Link>
                     </div>
                     <div className="login">
                         <img src={profileIcon} width={30} onClick={() => setShowDropdown(!showDropdown)} />
@@ -62,7 +64,7 @@ export default function Landing({ user }) {
                         )}
                     </div>
                 </div>
-            </div>
+            </div> 
 
 
             <div className="hero" style={{ backgroundImage: `url(${heroImage})` }}>
@@ -83,24 +85,36 @@ export default function Landing({ user }) {
 
             <div className="testimonials">
                 <p className='test'>
+                    <h1 className='quotes'>"   </h1>
                     The team at GatherEase made our event stress-free and unforgettable. <br />
                     They went above and beyond to ensure everything was perfect. Highly recommend!<br />
-                    John & Kelly
+                    <br></br>
+                    <i>John & Kelly</i>
+                    <h1 className='quotes'>   "</h1>
                 </p>
                 <p className='test'>
+                    <h1 className='quotes'>"</h1>
                     GatherEase is the best in the business! Their team is professional, organized,<br />
                     and truly cares about making your event unforgettable.<br />
-                    Katie & Ryan
+                    <br></br>
+                    <i>Katie & Ryan</i>
+                    <h1 className='quotes'> "</h1>
                 </p>
                 <p className='test'>
+                    <h1 className='quotes'>"</h1>
                     GatherEase exceeded our expectations in every way. Their attention to detail and<br />
                     professionalism are unmatched. Thank you for making our event unforgettable!<br />
-                    Adam & Sarah
+                    <br></br>
+                    <i>Adam & Sarah</i>
+                    <h1 className='quotes'>"</h1>
                 </p>
                 <p className='test'>
+                    <h1 className='quotes'>"</h1>
                     Thank you GatherEase for making our event unforgettable! Your team's creativity <br />
                     and attention to detail made all the difference.<br />
-                    Haley & Nick
+                    <br></br>
+                    <i>Haley & Nick</i>
+                    <h1 className='quotes'> "</h1>
                 </p>
 
             </div>
@@ -108,7 +122,7 @@ export default function Landing({ user }) {
 
             <div className="gallery"></div>
 
-            <div className="contact">
+            <div className="contact" id="contact">
                 <div className='contact-info'>
                     <form onSubmit={handleSubmit}>
                         <h2 className='contact-us'><i>CONTACT US</i></h2>

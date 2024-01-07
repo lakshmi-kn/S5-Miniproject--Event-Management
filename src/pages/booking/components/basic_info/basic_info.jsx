@@ -27,7 +27,7 @@ export const BasicInfoComponent = ({ basicInfo, updateBasicInfo }) => {
 
     return (
         <div className="date-time">
-            <h2>Basic Information</h2>
+            <h2>Date and Time</h2>
 
             <div className="block">
                 <div className="calendar">

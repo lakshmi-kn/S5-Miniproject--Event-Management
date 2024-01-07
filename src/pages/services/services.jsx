@@ -9,31 +9,19 @@ export default function Services() {
 
     let events = [{
         eventName: "Weddings",
-        Decription: "At GatherEase, we understand that your wedding day is one of the most important days of your life. That's why we offer a full event planning package that includes everything you need to make your day unforgettable.From venue selection to decor, catering to entertainment, we take care of everything so that you can focus on enjoying your special day."
-        // package_1: "Full Event Planning Package - 1,60,000 for 4 hours",
-        // package_2: "Partial Event Planning Package - 75,000 for four hours",
-        // package_3: "Day-of Coordination - 1,20,000 for 4 hours",
+        Description: "GatherEase knows your wedding day is crucial. Our full event planning package covers everything – from venue selection to decor, catering to entertainment. Let us handle the details while you savor every moment of your unforgettable day."
     },
     {
         eventName: "Private Parties",
-        Decription: "If you're planning a private event, whether it's a family gathering, a reunion, or a dinner party, GatherEase can help you make it special. We offer a range of services including venue selection, catering, decor, and entertainment, so that you can relax and enjoy your event with your guests."
-        // package_1: "Birthday Celebrations - 1,60,000 for 4 hours",
-        // package_2: "Anniversaries - 75,000 for four hours",
-        // package_3: "Private Events - 1,20,000 for 4 hours",
+        Description: "Plan your private event effortlessly with GatherEase. Whether it's a family gathering, reunion, or dinner party, we specialize in making it special. Our services include venue selection, catering, decor, and entertainment, allowing you to relax and enjoy the event with your guests."
     },
     {
         eventName: "Corporate Events",
-        Decription: "GatherEase is your all-in-one partner for successful events. Whether you're launching a product, organizing team-building activities, or planning a corporate conference, we've got you covered. For product launches, we offer services like venue selection, catering, decor, and entertainment to ensure your product gets the attention it deserves. Boost team morale and productivity with our tailored team-building events. When it comes to corporate conferences, we handle everything from venue logistics to catering and entertainment, making sure your brand shines and relationships thrive."
-        // package_1: "Conferences - 75,000 for four hours",
-        // package_2: "Product Launches - 1,20,000 for 4 hours",
-        // package_3: "Team Building Events - 1,60,000 for 4 hours",
+        Description: "Covering it all – from product launches to team-building and corporate conferences. For launches, we handle venue selection, catering, decor, and entertainment. Boost team spirit with personalized events. Our corporate conference expertise includes venue logistics, catering, and entertainment, ensuring your brand shines and relationships flourish."
     },
     {
         eventName: "Birthday Celebrations",
-        Decription: "Whether you're celebrating a milestone birthday or just want to throw a party for your friends and family, GatherEase can help. We offer a range of services including venue selection, catering, decor, and entertainment, so that you can focus on having fun with your guests."
-        // package_1: "Conferences - 75,000 for four hours",
-        // package_2: "Product Launches - 1,20,000 for 4 hours",
-        // package_3: "Team Building Events - 1,60,000 for 4 hours",
+        Description: "Celebrate with ease! Whether it's a milestone birthday or a casual gathering, GatherEase has you covered. Enjoy the party while we handle venue selection, catering, decor, and entertainment for you and your guests."
     }
     ]
 
@@ -42,14 +30,14 @@ export default function Services() {
 
             <div className="header">
                 <div className="logo">
-                    <img src={logo} alt="" width={200} />
+                    <Link to= "/"><img src={logo} alt="" width={200} /></Link>
                 </div>
                 <div className="nav">
                     <div className="nav-items">
-                        <a href="#about">About</a>
-                        <a href="">Services</a>
-                        <a href="#contact">Contact Us</a>
-                        <a href="#gallery">Gallery</a>
+                        <Link to="/about">About</Link>
+                        <Link to="">Services</Link>
+                        <a href="/#contact">Contact Us</a>
+                        <Link to="/gallery">Gallery</Link>
                     </div>
                     <div className="login">
                         <img src={profileIcon} width={30} />
@@ -67,9 +55,10 @@ export default function Services() {
                                     // eslint-disable-next-line react/jsx-key
                                     <div className="event">
                                         <h3>{event.eventName}</h3>
-                                        <p>{event.package_1}</p>
+                                        {/* <p>{event.package_1}</p>
                                         <p>{event.package_2}</p>
-                                        <p>{event.package_3}</p>
+                                        <p>{event.package_3}</p> */}
+                                        <p>{event.Description}</p>
                                         <button className="book-btn">
                                             <Link to={'/new-booking'}> Book Now </Link>
                                         </button>

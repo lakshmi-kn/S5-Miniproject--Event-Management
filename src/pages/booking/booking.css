@@ -21,3 +21,32 @@
     background-color: goldenrod;
     border-color: transparent;
 }
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.nav {
+  position: relative;
+  display: flex;
+  height: 100%;
+  top: 50%;
+  align-items: center;
+}
+
+.nav>.login {
+  padding-left: 5rem;
+}
+
+.nav-items>a {
+  padding-left: 4rem;
+  color: #000;
+  text-decoration: none;
+  font-size: 15px;
+}  

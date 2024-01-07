@@ -11,7 +11,9 @@ import 'react-tabs/style/react-tabs.css';
 import 'react-calendar/dist/Calendar.css';
 import "./booking.css"
 
+
 import logo from "../../assets/logo.png"
+import profileIcon from "../../assets/profile.svg"
 import InformationPanel from './bill/bill';
 
 
@@ -124,14 +126,14 @@ export const NewBooking = () => {
         <>
             <div className="header">
                 <div className="logo">
-                    <img src={logo} alt="" width={200} />
+                <Link to= "/"><img src={logo} alt="" width={200} /></Link>
                 </div>
                 <div className="nav">
                     <div className="nav-items">
-                        <a href="#about">About</a>
+                        <Link to="/about">About</Link>
                         <Link to='/services' >Services</Link>
-                        <a href="#contact">Contact Us</a>
-                        <a href="#gallery">Gallery</a>
+                        <Link to="/#contact">Contact Us</Link>
+                        <Link to="/gallery">Gallery</Link>
                     </div>
                 </div>
             </div>
@@ -139,7 +141,7 @@ export const NewBooking = () => {
             <div className="booking">
                 <Tabs>
                     <TabList>
-                        <Tab>Basic Information</Tab>
+                        <Tab>Date and Time</Tab>
                         <Tab>Venue</Tab>
                         <Tab>Transport and Accomodation</Tab>
                         <Tab>Lights, Visuals and Sounds</Tab>

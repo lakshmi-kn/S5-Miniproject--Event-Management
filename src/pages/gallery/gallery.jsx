@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './gallery.css';
-// import CloseIcon from '@material-ui/icons/Close';
+
+import closeicon from '../../assets/images/gallery/closeicon.webp';
 import img1 from '../../assets/images/gallery/1.jpeg';
 import img2 from '../../assets/images/gallery/2.jpg';
 import img3 from '../../assets/images/gallery/3.jpg';
@@ -16,6 +17,13 @@ import img12 from '../../assets/images/gallery/12.jpg';
 import img13 from '../../assets/images/gallery/13.jpg';
 import img14 from '../../assets/images/gallery/14.jpg';
 import img15 from '../../assets/images/gallery/15.jpg';
+
+import logo from '../../assets/logo.png'
+import profileIcon from "../../assets/profile.svg"
+
+import { Link } from 'react-router-dom';
+
+import Header from '../../shared/navbar/navbar';
 
 const Gallery = () => {
     let data = [
@@ -91,12 +99,29 @@ const Gallery = () => {
 
     return (
         <>
-            <div className="heading">
+        <div className="header">
+                <div className="logo">
+                    <Link to= "/"><img src={logo} alt="" width={200} /></Link>
+                </div>
+                <div className="nav">
+                    <div className="nav-items">
+                        <Link to="/about">About</Link>
+                        <Link to="">Services</Link>
+                        <a href="/#contact">Contact Us</a>
+                        <Link to="/gallery">Gallery</Link>
+                    </div>
+                    <div className="login">
+                        <img src={profileIcon} width={30} />
+                    </div>
+                </div>
+            </div>
+
+            <div className="heading_gal">
                 <h1>Gallery Page</h1>
             </div>
             <div className={model ? 'model open' : 'model'}>
-                <img src={tempimgSrc} alt="" />
-                {/* <CloseIcon onClick={() => setModel(false)} /> */}
+                <img className='gal-pics' src={tempimgSrc} alt="" />
+                <img className= 'close-icon' onClick={() => setModel(false)} src={closeicon} />
             </div>
             <div className="gallery">
                 {data.map((item, index) => {
