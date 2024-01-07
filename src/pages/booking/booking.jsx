@@ -12,10 +12,14 @@ import 'react-calendar/dist/Calendar.css';
 import "./booking.css"
 
 import logo from "../../assets/logo.png"
+import InformationPanel from './bill/bill';
 
 
 export const NewBooking = () => {
     const [submitDisabled, setSubmitDisabled] = useState(true);
+    const [totalPrice, setTotalPrice] = useState(0)
+    const [dataReady, setDataReady] = useState(false)
+
     const [basicInfo, setBasicInfo] = useState(
         {
             eventDate: new Date(),
@@ -31,20 +35,24 @@ export const NewBooking = () => {
             venueLocation: '',
             venueSize: 0,
             venueInformation: '',
+            venuePrice: ''
         }
     )
     const [transport, setTransport] = useState(
         {
             transportType: '',
             pickupLocation: '',
-            transpotCount: 0
+            transpotCount: 0,
+            transportCapacity: 0
         }
     )
     const [catering, setCater] = useState(
         {
+            catererName: '',
             cateringType: '',
             peopleCount: 0,
             menuItems: [],
+            caterPrice: 0
         }
     )
 
@@ -100,8 +108,16 @@ export const NewBooking = () => {
         }));
     };
 
-    function handleClick() {
-        console.log(basicInfo)
+    function revealInfo() {
+        const combinedData = {
+            basicInfo: basicInfo,
+            venue: venue,
+            transport: transport,
+            catering: catering,
+            lvs: lvsInfo,
+        };
+
+        return <InformationPanel combinedData={combinedData} />
     }
 
     return (
@@ -126,8 +142,9 @@ export const NewBooking = () => {
                         <Tab>Basic Information</Tab>
                         <Tab>Venue</Tab>
                         <Tab>Transport and Accomodation</Tab>
-                        <Tab>Catering</Tab>
                         <Tab>Lights, Visuals and Sounds</Tab>
+                        <Tab>Catering</Tab>
+                        <Tab>Review</Tab>
                     </TabList>
 
                     <TabPanel>
@@ -152,6 +169,13 @@ export const NewBooking = () => {
                     </TabPanel>
 
                     <TabPanel>
+                        <LVSComponent
+                            lvsInfo={lvsInfo}
+                            updateLvsInfo={updateLvsInfo}
+                        />
+                    </TabPanel>
+
+                    <TabPanel>
                         <CateringComponent
                             catering={catering}
                             updateCatering={updateCatering}
@@ -159,15 +183,12 @@ export const NewBooking = () => {
                     </TabPanel>
 
                     <TabPanel>
-                        <LVSComponent
-                            lvsInfo={lvsInfo}
-                            updateLvsInfo={updateLvsInfo}
-                        />s
+                        {revealInfo()}
                     </TabPanel>
                 </Tabs>
 
                 <div className="button-container">
-                    <button onClick={handleClick}>Submit</button>
+                    <button >Submit</button>
                 </div>
             </div>
         </>
