@@ -9,12 +9,22 @@ import './bi.css';
 export const BasicInfoComponent = ({ basicInfo, updateBasicInfo }) => {
     const { eventDate, eventName, eventLocation, eventDescription, eventTimings } = basicInfo;
     const [selectedTime, setSelectedTime] = useState(eventTimings);
+    const [dateError, setDateError] = useState(null);
+
+let todayWithoutTime
 
     const handleDateChange = (newDate) => {
-        updateBasicInfo({
-            ...basicInfo,
-            eventDate: newDate,
-        });
+        // Check if date is after today (excluding time)
+        todayWithoutTime = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+        if (newDate > todayWithoutTime) {
+            updateBasicInfo({
+                ...basicInfo,
+                eventDate: newDate,
+            });
+        } else {
+            // Optionally, provide feedback to the user about invalid date selection
+            setDateError('Invalid date: Events cannot be scheduled on past dates.');
+        }
     };
 
     const handleEventTimingsChange = (newTime) => {
@@ -28,6 +38,8 @@ export const BasicInfoComponent = ({ basicInfo, updateBasicInfo }) => {
     return (
         <div className="date-time">
             <h2>Date and Time</h2>
+
+            {dateError && <p className="error-message">{dateError}</p>}
 
             <div className="block">
                 <div className="calendar">

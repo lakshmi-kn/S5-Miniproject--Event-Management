@@ -60,9 +60,9 @@ function Dashboard() {
                             <li className={selectedSection === 'booking-details' ? 'selected' : ''}>
                                 <a onClick={() => handleSectionClick('booking-details')}>Booking Details</a>
                             </li>
-                            <li className={selectedSection === 'services' ? 'selected' : ''}>
+                            {/* <li className={selectedSection === 'services' ? 'selected' : ''}>
                                 <a onClick={() => handleSectionClick('services')}>Services</a>
-                            </li>
+                            </li> */}
                         </ul>
                     </nav>
                 </aside>

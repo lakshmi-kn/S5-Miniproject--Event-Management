@@ -179,7 +179,7 @@ export const NewBooking = () => {
                     <TabList>
                         <Tab>Date and Time</Tab>
                         <Tab>Venue</Tab>
-                        <Tab>Transport and Accomodation</Tab>
+                        <Tab>Transport</Tab>
                         <Tab>Lights, Visuals and Sounds</Tab>
                         <Tab>Catering</Tab>
                         <Tab>Review</Tab>
